@@ -1,4 +1,4 @@
-﻿namespace AvaloniaStudentManager.ViewModels;
+﻿namespace AvaloniaStudentManager.ViewModels; 
 
 public partial class MainWindowViewModel : ViewModelBase
 {

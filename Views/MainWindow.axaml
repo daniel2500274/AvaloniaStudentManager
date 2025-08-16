@@ -3,18 +3,38 @@
         xmlns:vm="using:AvaloniaStudentManager.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="450"
         x:Class="AvaloniaStudentManager.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
+        Foreground="{DynamicResource PrimaryForeground}"
         Icon="/Assets/avalonia-logo.ico"
         Title="AvaloniaStudentManager">
-
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="300, *">
+        <Border Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}">
+            <Grid  RowDefinitions="Auto,*,Auto"> <!-- Tres filas: contenido, controles, botón -->
+                <Image
+                    Grid.Row="0"
+                    Source="/Assets/AvaloniaLogo.png"
+                    Stretch="Fill"
+                    Height=""
+                    Margin="0,0,0,0"/>
+                <StackPanel Grid.Row="1" Spacing="9">
+                    <TextBlock Margin="0 5">Nombre: </TextBlock>
+                    <TextBox Watermark="Ingresa tu nombre completo"/>
+                    <TextBlock Margin="0 5">Carnet:  </TextBlock>
+                    <TextBox Watermark="Ingresa tu carnet"/>
+                    <TextBlock Margin="0 5">Carrera</TextBlock>
+                    <ComboBox x:Name="Careers" />
+                </StackPanel>
+                <!-- Botón en la tercera fila -->
+                <Grid Grid.Row="2" ColumnDefinitions="90,90" > 
+                    <Button Grid.Column="0" Content="Agregar" HorizontalAlignment="Right"/>
+                    <Button Grid.Column="1" Content="Limpiar" HorizontalAlignment="Right" /> 
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
 </Window>
